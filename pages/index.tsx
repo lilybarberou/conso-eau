@@ -15,7 +15,7 @@ export default function Home() {
     const columns = ['Date', 'Jour de la semaine', 'Date relève', 'Fin relève', 'Nombre de relève', 'Nb conso début', 'Nb conso fin', 'Ecart'];
     const days = ['', 'Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
     const months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
-    const yearsList = [2018, 2019, 2020];
+    const yearsList = [2018, 2019];
 
     useEffect(() => {
         const initPage = async () => {
