@@ -18,10 +18,12 @@ export const Button = styled.button`
     }
 `
 
-export const Input  = styled.input`
-    height: 35px;
+export const Input  = styled.input<{$width?: string}>`
+    height: 40px;
     padding: 0 10px;
     font-family: ${({ theme }) => theme.font};
+    width: ${({ $width }) => $width ? $width : '100%'};
+    box-sizing: border-box;
 
     :focus {
         outline: none;

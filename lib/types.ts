@@ -1,7 +1,23 @@
 export type User = {
-  me_id: number;
-  me_role: number;
-  me_email: string;
-  me_name: string;
-  me_firstname: string;
+  id: number;
+  role: number;
+  email: string;
+  firstname: string;
+  name: string;
+  address: string;
+  postal_code: string;
+  city: string;
+}
+
+export type Consumption = {
+  id: number;
+  date: number;
+  day_number: number;
+  time_start: string;
+  shift_number: number;
+  time_end: string;
+  consumption: number;
+  final_consumption: number;
+  gap: number;
+  avg_consumption?: number;
 }

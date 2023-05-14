@@ -45,8 +45,11 @@ export default function Register() {
                 <Input defaultValue="a@a.a" type="email" placeholder="Email" name="email" required={true} autoComplete="off" />
                 <Input type="password" placeholder="Mot de passe" name="password" required={true} autoComplete="off" />
                 <Input type="password" placeholder="Répéter le mot de passe" name="password_repeat" required={true} autoComplete="off" />
-                <Input placeholder="Prénom" name="firstname" required={true} autoComplete="off" />
-                <Input placeholder="Nom" name="name" required={true} autoComplete="off" />
+                <Input $width="calc(50% - 5px)" placeholder="Prénom" name="firstname" required={true} autoComplete="off" />
+                <Input $width="calc(50% - 5px)" placeholder="Nom" name="name" required={true} autoComplete="off" />
+                <Input placeholder="Adresse" name="address" required={true} autoComplete="off" />
+                <Input $width="calc(50% - 5px)" placeholder="Code postal" name="postal_code" required={true} autoComplete="off" />
+                <Input $width="calc(50% - 5px)" placeholder="Ville" name="city" required={true} autoComplete="off" />
                 <div>
                     <Link href="/connexion">Connexion</Link>
                     <Button>S'inscrire</Button>
@@ -71,7 +74,7 @@ S.Form = styled.form`
     margin: auto;
     width: 400px;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 10px;
     background: black;
     border-radius: 5px;
@@ -81,7 +84,8 @@ S.Form = styled.form`
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
-        margin-top: 10px;
+        margin-top: 20px;
+        width: 100%;
 
         button {
             width: 150px;
