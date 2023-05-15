@@ -42,5 +42,5 @@ export default function TotalConsumptions() {
         ],
     };
 
-    return <LineChart title='Consommations complètes mensuelles' data={data} />;
+    return <LineChart title='Consommations complètes annuelles' data={data} />;
 }
