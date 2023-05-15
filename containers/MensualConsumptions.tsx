@@ -3,11 +3,10 @@ import styled from 'styled-components';
 import { fetchApi } from '@lib/api';
 import { Consumption } from '@lib/types';
 import { Table } from '@components/StyledComponents';
+import { shortMonths, yearsList } from '@contexts/data';
 
 export default function MensualConsumptions() {
     const [consumptions, setConsumptions] = useState<{ [date: string]: number }>({});
-    const months = ['Jan.', 'Fév.', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil.', 'Août', 'Sep.', 'Oct.', 'Nov.', 'Déc.'];
-    const yearsList = [2018, 2019];
 
     useEffect(() => {
         const initPage = async () => {
@@ -32,7 +31,7 @@ export default function MensualConsumptions() {
                 <thead>
                     <tr>
                         <th></th>
-                        {months.map((month) => (
+                        {shortMonths.map((month) => (
                             <th key={month}>{month}</th>
                         ))}
                     </tr>
@@ -41,7 +40,7 @@ export default function MensualConsumptions() {
                     {yearsList.map((year) => (
                         <S.Row key={year}>
                             <td>{year}</td>
-                            {months.map((month, index) => (
+                            {shortMonths.map((month, index) => (
                                 <td key={`${year}-${index}`}>{consumptions[`${year}-${index + 1}`]?.toFixed(2) || 0}</td>
                             ))}
                         </S.Row>

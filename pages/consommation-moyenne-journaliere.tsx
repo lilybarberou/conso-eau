@@ -5,13 +5,11 @@ import { fetchApi } from '@lib/api';
 import { Consumption } from '@lib/types';
 import { Table } from '@components/StyledComponents';
 import Years from '@components/Years';
+import { days, months, yearsList } from '@contexts/data';
 
 export default function DailyConsumption() {
     const [selectedYear, setSelectedYear] = useState(2018);
     const [consumptions, setConsumptions] = useState<{ [date: string]: number }>({});
-    const days = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
-    const months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
-    const yearsList = [2018, 2019];
 
     useEffect(() => {
         const initPage = async () => {
@@ -21,7 +19,6 @@ export default function DailyConsumption() {
                 query.data.forEach((consumption: Consumption) => {
                     obj[`${consumption.year}-${consumption.month}-${consumption.day_number}`] = consumption.avg_consumption!;
                 });
-                console.log(obj);
 
                 setConsumptions(obj);
             }

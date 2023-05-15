@@ -16,8 +16,8 @@ export default function Navigation() {
     // declare navLinks
     const navLinks = [
         { title: 'Accueil', path: '/' },
-        { title: 'Consommations journalières', path: '/consommations-journalieres' },
-        { title: 'Consommations par périodes', path: '/consommations-periodes' },
+        { title: 'Conso. moy. journalière', path: '/consommation-moyenne-journaliere' },
+        { title: 'Conso. moy. par périodes', path: '/consommation-moyenne-periodes' },
         { title: 'Analytics', path: '/analytics' },
         { cond: isAdmin, title: 'Ajouter une consommation', path: '/consommations/ajouter' },
     ];

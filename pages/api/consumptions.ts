@@ -24,6 +24,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         if (req.query?.year && req.query?.month) {
             whereFields.stmt = `WHERE date LIKE '%${req.query.month.toString().padStart(2, '0')}/${req.query.year}'`;
         }
+        else if (req.query?.year) {
+          customFields.push('time_start', 'time_end', "MONTH(STR_TO_DATE(date, '%d/%m/%Y')) AS month");
+            whereFields.stmt = `WHERE date LIKE '%/${req.query.year}'`;
+        }
         else if (req.query?.avgDays) {
             customFields.push("day_number, MONTH(STR_TO_DATE(date, '%d/%m/%Y')) AS month", "YEAR(STR_TO_DATE(date, '%d/%m/%Y')) AS year", 'AVG(final_consumption - consumption) AS avg_consumption', 'day_number');
             groupBy = "GROUP BY MONTH(STR_TO_DATE(date, '%d/%m/%Y')), YEAR(STR_TO_DATE(date, '%d/%m/%Y')), day_number";
@@ -32,11 +36,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             customFields.push("MONTH(STR_TO_DATE(date, '%d/%m/%Y')) AS month", "YEAR(STR_TO_DATE(date, '%d/%m/%Y')) AS year", 'AVG(final_consumption - consumption) AS avg_consumption');
             groupBy = "GROUP BY MONTH(STR_TO_DATE(date, '%d/%m/%Y')), YEAR(STR_TO_DATE(date, '%d/%m/%Y'))";
         }
+        else if (req.query?.sumMonths) {
+          customFields.push("MONTH(STR_TO_DATE(date, '%d/%m/%Y')) AS month", "YEAR(STR_TO_DATE(date, '%d/%m/%Y')) AS year", 'SUM(final_consumption - consumption) AS sum_consumption');
+          groupBy = "GROUP BY MONTH(STR_TO_DATE(date, '%d/%m/%Y')), YEAR(STR_TO_DATE(date, '%d/%m/%Y'))";
+        }
 
         const sql = `SELECT ${customFields.length ?  customFields.join(', ') : consumptionsFields.join(', ')} FROM consumptions ${whereFields.stmt} ${groupBy}`;  
         const results = await sqlQuery(sql, whereFields.values);
-        console.log(results);
-        
         
         res.status(200).json({success: true, data: results});
     }

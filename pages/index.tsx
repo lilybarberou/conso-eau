@@ -6,6 +6,7 @@ import { Consumption } from '@lib/types';
 import { Select, Table } from '@components/StyledComponents';
 import { daysInMonth } from '@contexts/Utils';
 import Years from '@components/Years';
+import { days, months, yearsList } from '@contexts/data';
 
 export default function Home() {
     const firstRender = useRef(true);
@@ -14,9 +15,6 @@ export default function Home() {
     const [selectedMonth, setSelectedMonth] = useState<number>(currentMonth);
     const [consumptions, setConsumptions] = useState<{ [date: string]: Consumption }>({});
     const columns = ['Date', 'Jour de la semaine', 'Date relève', 'Fin relève', 'Nombre de relève', 'Nb conso début', 'Nb conso fin', 'Ecart'];
-    const days = ['', 'Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
-    const months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
-    const yearsList = [2018, 2019];
 
     useEffect(() => {
         const initPage = async () => {
@@ -76,7 +74,7 @@ export default function Home() {
                             return (
                                 <S.Row key={`all-days-${day}`} $empty={true}>
                                     <td>{date}</td>
-                                    <td>{days[dateDay]}</td>
+                                    <td>{days[dateDay - 1]}</td>
                                 </S.Row>
                             );
                         } else consumption = consumptions[date];
@@ -92,7 +90,7 @@ export default function Home() {
                         return (
                             <S.Row key={`all-days-${consumption.id}`} $valid={trueStart && trueEnd}>
                                 <td>{consumption.date}</td>
-                                <td>{days[consumption.day_number]}</td>
+                                <td>{days[consumption.day_number - 1]}</td>
                                 <td>{consumption.time_start}</td>
                                 <td>{consumption.time_end}</td>
                                 <td>{consumption.shift_number}</td>
