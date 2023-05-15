@@ -26,7 +26,7 @@ export default function MensualConsumptions() {
 
     return (
         <>
-            <h2>Consommations mensuelles</h2>
+            <h2>Mensuelles</h2>
             <Table $hideFirst={true} $columnsNumber={13}>
                 <thead>
                     <tr>

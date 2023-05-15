@@ -32,6 +32,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             customFields.push("day_number, MONTH(STR_TO_DATE(date, '%d/%m/%Y')) AS month", "YEAR(STR_TO_DATE(date, '%d/%m/%Y')) AS year", 'AVG(final_consumption - consumption) AS avg_consumption', 'day_number');
             groupBy = "GROUP BY MONTH(STR_TO_DATE(date, '%d/%m/%Y')), YEAR(STR_TO_DATE(date, '%d/%m/%Y')), day_number";
         }
+        else if (req.query?.avgWeeks) {
+            customFields.push(" DATE_FORMAT(STR_TO_DATE(date, '%d/%m/%Y'), '%Y-%m-%d') - INTERVAL WEEKDAY(STR_TO_DATE(date, '%d/%m/%Y')) DAY AS week", 'AVG(final_consumption - consumption) as avg_consumption');
+            groupBy = "GROUP BY week";
+        }
         else if (req.query?.avgMonths) {
             customFields.push("MONTH(STR_TO_DATE(date, '%d/%m/%Y')) AS month", "YEAR(STR_TO_DATE(date, '%d/%m/%Y')) AS year", 'AVG(final_consumption - consumption) AS avg_consumption');
             groupBy = "GROUP BY MONTH(STR_TO_DATE(date, '%d/%m/%Y')), YEAR(STR_TO_DATE(date, '%d/%m/%Y'))";

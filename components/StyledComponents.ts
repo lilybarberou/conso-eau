@@ -40,7 +40,7 @@ export const Select = styled.select`
     }
 `
 
-export const Table = styled.table<{ $hideFirst?: boolean; $columnsNumber: number }>`
+export const Table = styled.table<{ $hideFirst?: boolean; $columnsNumber: number, $columnsWidth?: string }>`
 width: fit-content;
 margin-top: 10px;
 font-size: 14px;
@@ -54,7 +54,7 @@ thead tr {
 }
 tr {
     display: grid;
-    grid-template-columns: ${({ $columnsNumber }) => `repeat(${$columnsNumber}, 1fr)`};
+    grid-template-columns: ${({ $columnsNumber, $columnsWidth }) => `repeat(${$columnsNumber}, ${$columnsWidth || '1fr'})`};
 }
 td,
 th {

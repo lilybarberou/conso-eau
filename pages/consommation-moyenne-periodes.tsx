@@ -7,9 +7,9 @@ export default function ConsumptionsbyPeriod() {
     return (
         <S.Container>
             <Head>
-                <title>Consommations par périodes</title>
+                <title>Consommations moyennes par périodes</title>
             </Head>
-            <h1>Consommations par périodes</h1>
+            <h1>Consommations moyennes par périodes</h1>
             <WeeklyConsumptions />
             <MensualConsumptions />
         </S.Container>
