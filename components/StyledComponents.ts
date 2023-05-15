@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Button = styled.button`
     background-color: ${({theme}) => theme.primary};
@@ -39,3 +39,34 @@ export const Select = styled.select`
         outline: none;
     }
 `
+
+export const Table = styled.table<{ $hideFirst?: boolean; $columnsNumber: number }>`
+width: fit-content;
+margin-top: 10px;
+font-size: 14px;
+display: flex;
+flex-direction: column;
+border-collapse: collapse;
+
+thead tr {
+    color: ${({ theme }) => theme.primary};
+    font-size: 15px;
+}
+tr {
+    display: grid;
+    grid-template-columns: ${({ $columnsNumber }) => `repeat(${$columnsNumber}, 1fr)`};
+}
+td,
+th {
+    border: 1px solid #575757;
+    text-align: left;
+    padding: 8px;
+}
+${({ $hideFirst }) =>
+    $hideFirst &&
+    css`
+        thead tr th:first-of-type {
+            border: none;
+        }
+    `}
+`;

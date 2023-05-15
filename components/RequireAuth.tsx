@@ -7,7 +7,7 @@ export default function RequireAuth(props: PropsWithChildren) {
     const { children } = props;
     const router = useRouter();
     const pageAllowed = ['/connexion', '/inscription'].includes(router.pathname);
-    const noAdminAllowed = ['/', '/consommations-journalieres'].includes(router.pathname);
+    const noAdminAllowed = ['/', '/consommations-journalieres', '/consommations-periodes', '/analytics'].includes(router.pathname);
     const [authenticated, setAuthenticated] = useState(false);
     const [loading, setLoading] = useState(true);
 

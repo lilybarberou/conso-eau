@@ -20,4 +20,6 @@ export type Consumption = {
   final_consumption: number;
   gap: number;
   avg_consumption?: number;
+  month?: number;
+  year?: number;
 }
