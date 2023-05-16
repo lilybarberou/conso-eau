@@ -49,7 +49,7 @@ export default function WeeklyConsumptions() {
                         {consumptions
                             .filter((e) => e.week.includes(`${selectedYear}-${selectedMonth.toString().padStart(2, '0')}`))
                             .map((consumption) => (
-                                <th key={consumption.week}>{consumption.week}</th>
+                                <th key={consumption.week}>{consumption.week.replaceAll('-', '/')}</th>
                             ))}
                     </tr>
                 </thead>
