@@ -32,7 +32,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       let invoicePeriodLabel = '';
 
       const data = JSON.parse(req.body) as Body;
-      console.log(data);
 
       // GET AMOUNT BY PERIOD
       // DAY
@@ -103,13 +102,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         ],
       };
         
-      createInvoice(invoice, 'lib/invoice.pdf');
-
-      // send pdf to client
-      const file = readFileSync('lib/invoice.pdf');
-      const buffer = Buffer.from(file).toString('base64');
-      
-      res.status(200).json({success: true, buffer});
+      createInvoice(invoice, 'lib/invoice.pdf', res);
     }
   }
   catch(err: any) {
