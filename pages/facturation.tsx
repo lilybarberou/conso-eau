@@ -24,8 +24,8 @@ export default function Facturation() {
         const data = getFormData('#form');
 
         const query = await fetchApi(`pdf`, { method: 'POST', body: JSON.stringify({ period: Number(period), token, ...data }) });
-        // if (query.success) downloadPDF(query.buffer);
-        // else toast.error(query.message);
+        if (query.success) downloadPDF(query.buffer);
+        else toast.error(query.message);
     };
 
     const changePeriod = (e: ChangeEvent<HTMLSelectElement>) => {
