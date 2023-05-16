@@ -25,3 +25,17 @@ export type Consumption = {
   year?: number;
   isValid?: boolean;
 }
+
+export type Invoice = {
+  shipping: {
+      name: string;
+      address: string;
+      city: string;
+      postal_code: string;
+  };
+  items: {
+      title: string;
+      quantity: number;
+      amount: string | number;
+  }[];
+}

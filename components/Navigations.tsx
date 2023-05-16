@@ -19,6 +19,7 @@ export default function Navigation() {
         { title: 'Conso. moy. journalière', path: '/consommation-moyenne-journaliere' },
         { title: 'Conso. moy. par périodes', path: '/consommation-moyenne-periodes' },
         { title: 'Analytics', path: '/analytics' },
+        { title: 'Facturation', path: '/facturation' },
         { cond: isAdmin, title: 'Ajouter une consommation', path: '/consommations/ajouter' },
     ];
 
