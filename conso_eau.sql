@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 22 mai 2023 à 17:38
+-- Généré le : mar. 23 mai 2023 à 14:11
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -736,7 +736,7 @@ INSERT INTO `consumptions` (`id`, `date`, `day_number`, `time_start`, `shift_num
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `role` int(11) NOT NULL,
+  `role` int(11) NOT NULL DEFAULT 2,
   `email` varchar(40) NOT NULL,
   `password` varchar(80) NOT NULL,
   `firstname` varchar(30) NOT NULL,
@@ -751,7 +751,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role`, `email`, `password`, `firstname`, `name`, `address`, `city`, `postal_code`) VALUES
-(1, 2, 'user@conso-eau.fr', '$2b$10$IPE2MGPlf2ddBJBCQXy6mOjiATFYAdfiYCNJVgBgJsXOu4gJTHloS', 'John', 'Doe', '10 rue des prés', 'Mulhouse', '68200');
+(1, 2, 'john.doe@gmail.com', '$2b$10$jD1qnYGilbUpc8NAreUwR.2Fzk6zRsK5oLXK8Kg4rf8WPPckbQvP2', 'John', 'Doe', '10 rue des prés', 'Mulhouse', '68200');
 
 --
 -- Index pour les tables déchargées

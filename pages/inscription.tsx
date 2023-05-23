@@ -40,18 +40,18 @@ export default function Register() {
             <Head>
                 <title>Inscription</title>
             </Head>
-            <S.Form id="form" onSubmit={handleSubmit}>
+            <S.Form id='form' onSubmit={handleSubmit}>
                 <h1>Inscription</h1>
-                <Input defaultValue="a@a.a" type="email" placeholder="Email" name="email" required={true} autoComplete="off" />
-                <Input type="password" placeholder="Mot de passe" name="password" required={true} autoComplete="off" />
-                <Input type="password" placeholder="Répéter le mot de passe" name="password_repeat" required={true} autoComplete="off" />
-                <Input $width="calc(50% - 5px)" placeholder="Prénom" name="firstname" required={true} autoComplete="off" />
-                <Input $width="calc(50% - 5px)" placeholder="Nom" name="name" required={true} autoComplete="off" />
-                <Input placeholder="Adresse" name="address" required={true} autoComplete="off" />
-                <Input $width="calc(50% - 5px)" placeholder="Code postal" name="postal_code" required={true} autoComplete="off" />
-                <Input $width="calc(50% - 5px)" placeholder="Ville" name="city" required={true} autoComplete="off" />
+                <Input type='email' placeholder='Email' name='email' required={true} autoComplete='off' />
+                <Input type='password' placeholder='Mot de passe' name='password' required={true} autoComplete='off' />
+                <Input type='password' placeholder='Répéter le mot de passe' name='password_repeat' required={true} autoComplete='off' />
+                <Input $width='calc(50% - 5px)' placeholder='Prénom' name='firstname' required={true} autoComplete='off' />
+                <Input $width='calc(50% - 5px)' placeholder='Nom' name='name' required={true} autoComplete='off' />
+                <Input placeholder='Adresse' name='address' required={true} autoComplete='off' />
+                <Input $width='calc(50% - 5px)' placeholder='Code postal' name='postal_code' required={true} autoComplete='off' />
+                <Input $width='calc(50% - 5px)' placeholder='Ville' name='city' required={true} autoComplete='off' />
                 <div>
-                    <Link href="/connexion">Connexion</Link>
+                    <Link href='/connexion'>Connexion</Link>
                     <Button>S'inscrire</Button>
                 </div>
             </S.Form>
